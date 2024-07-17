@@ -30,7 +30,11 @@ class Galaxy():
 
     # Match with the zCOSMOS catalog to extract the spectroscopic redshift
     def find_z_spec(self):
-        data = fits.open('../data/zCOSMOS_20K.fits')[1].data
+        try:
+            data = fits.open('data/zCOSMOS_20K.fits')[1].data
+        except:
+            data = fits.open('../data/zCOSMOS_20K.fits')[1].data
+        
         this_one = data['object_id']==self.id
 
         if True in this_one:
@@ -40,7 +44,11 @@ class Galaxy():
 
     # Get the 1D spectra and load it
     def retrieve_1dspec(self):
-        spec_1d = fits.open(f'../examples/{self.id}_1d.fits')[1].data
+        try:
+            spec_1d = fits.open(f'examples/{self.id}_1d.fits')[1].data
+        except:
+            spec_1d = fits.open(f'../examples/{self.id}_1d.fits')[1].data
+           
         wave = spec_1d['WAVE'][0]
         flux = spec_1d['FLUX_REDUCED'][0]
         #err = spec_1d['ERR'][0]
@@ -118,8 +126,9 @@ class Galaxy():
 
             # Plot the Model against Observations
             if self.plot == True:
-                plt.plot(self.galaxy.wave[keep],self.galaxy.flux[keep])
-                plt.plot(self.galaxy.wave[keep],bestfit_model,ls='--')
+                plt.plot(self.galaxy.wave[keep],self.galaxy.flux[keep],label="Observed")
+                plt.plot(self.galaxy.wave[keep],bestfit_model,ls='--',label="Model")
+                plt.legend(loc="upper right",ncol=1,numpoints=1,fontsize=8,frameon=False)
                 plt.show()
 
             return (params,perr) 
@@ -159,14 +168,15 @@ class Galaxy():
             if ("Angstrom" not in units) or ("km/s" not in units):
                 raise ValueError("Available Units are Angstrom and km/s")
     
+def main():
+    pedro = Galaxy(701230)
+    hb = pedro.run_line(4959.)
+
+    print(hb.getLineFlux())
+    print(hb.getContinuumFluxDensity())
+    print(hb.getVelocityDisp())
+    print(hb.getVelocityDisp(units="km/s",include_err=True))
 
             
-
-pedro = Galaxy(701230)
-hb = pedro.run_line(4959.,plot=False)
-
-print(hb.getLineFlux())
-print(hb.getContinuumFluxDensity())
-print(hb.getVelocityDisp())
-print(hb.getVelocityDisp(units="km/s",include_err=True))
-import pdb;pdb.set_trace()
+if __name__ == "__main__":
+    main()
