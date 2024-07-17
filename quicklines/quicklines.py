@@ -23,7 +23,6 @@ class Galaxy():
         # The 1D spectra is retrieved from the examples folder
         self.id = id
         self.zSpec = self.find_z_spec()
-        self.line = self.Line
         self.wave,self.flux,self.err = self.retrieve_1dspec()
 
         # Rest-Frame Wavelength Range Observed
@@ -31,27 +30,31 @@ class Galaxy():
 
     # Match with the zCOSMOS catalog to extract the spectroscopic redshift
     def find_z_spec(self):
-        data = fits.open('data/zCOSMOS_20K.fits')[1].data
+        data = fits.open('../data/zCOSMOS_20K.fits')[1].data
         this_one = data['object_id']==self.id
 
         if True in this_one:
-            return print(data['Redshift'][this_one])
+            return data['Redshift'][this_one][0]
         else:
             raise ValueError("ID is not in catalog")
 
     # Get the 1D spectra and load it
     def retrieve_1dspec(self):
-        spec_1d = fits.open(f'examples/{self.id}_1d.fits')[1].data
+        spec_1d = fits.open(f'../examples/{self.id}_1d.fits')[1].data
         wave = spec_1d['WAVE'][0]
         flux = spec_1d['FLUX_REDUCED'][0]
         err = spec_1d['ERR'][0]
         return (wave,flux,err)
 
+    def create_line(self, linewave=None):
+        return self.Line(self, linewave)
+    
     # This class defines all the emission line profile measurements
     class Line():
 
         # Initialize the attributes
-        def __init__(self,linewave):
+        def __init__(self,galaxy,linewave):
+            self.galaxy = galaxy
             self.linewave = linewave
 
             # TODO: Need to include a check
@@ -64,13 +67,17 @@ class Galaxy():
         def fit(self):
 
             # Fit the Model
-            obs_linewave = self.linewave*(1. + self.zSpec)
-            params,pcov = curve_fit(gaussian,self.wave,self.flux,p0=[1e-17,obs_linewave,1.,0],sigma=self.err)
+            obs_linewave = self.linewave*(1. + self.galaxy.zSpec)
+
+            params,pcov = curve_fit(gaussian,self.galaxy.wave,
+                                            self.galaxy.flux,
+                                            p0=[1e-17,obs_linewave,1.,0.],
+                                            sigma=self.galaxy.err)
 
             # Plot the Model against Observations
-            keep = np.where((self.wave > obs_linewave-50.) & (self.wave < obs_linewave+50.))
-            plt.plot(self.wave[keep],self.flux[keep])
-            plt.plot(self.wave[keep],gaussian(self.wave[keep],*params),ls='--')
+            keep = np.where((self.galaxy.wave > obs_linewave-50.) & (self.galaxy.wave < obs_linewave+50.))
+            plt.plot(self.galaxy.wave[keep],self.galaxy.flux[keep])
+            plt.plot(self.galaxy.wave[keep],gaussian(self.galaxy.wave[keep],*params),ls='--')
             plt.show()
 
             # Print out the Reduced Chi^2
@@ -95,11 +102,11 @@ class Galaxy():
             # In case user uses the wrong units
             if ("Angstrom" not in units) or ("km/s" not in units):
                 raise ValueError("Available Units are Angstrom and km/s")
-
+    
 
             
 
 pedro = Galaxy(701230)
-hb = pedro.Line(4861)
+hb = pedro.create_line(4861)
 pedro.zSpec
 print(hb.linewave)
