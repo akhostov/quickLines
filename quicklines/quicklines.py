@@ -8,7 +8,7 @@ import matplotlib.pyplot as plt
 def gaussian(x,lineFlux,cent_wave,sigma,cont):
     return (1/sigma*np.sqrt(2*np.pi))*lineFlux * np.exp(-(x - cent_wave)**2 / (2 * sigma**2)) + cont
 
-def reduced_Chi2(x,model,obs,err):
+def reduced_Chi2(model,obs,err):
     return 0.5*np.sum( ((model - obs)/err)**2. )
 
 
@@ -43,61 +43,117 @@ class Galaxy():
         spec_1d = fits.open(f'../examples/{self.id}_1d.fits')[1].data
         wave = spec_1d['WAVE'][0]
         flux = spec_1d['FLUX_REDUCED'][0]
-        err = spec_1d['ERR'][0]
+        #err = spec_1d['ERR'][0]
+        err = np.abs(0.2*flux) # TODO: zCOSMOS has 0 for error but says there is 20% uncertainty in the fluxcalibration
         return (wave,flux,err)
 
-    def create_line(self, linewave=None):
-        return self.Line(self, linewave)
+    def run_line(self, linewave,**kwargs):
+        return self.Line(self, linewave,**kwargs)
     
     # This class defines all the emission line profile measurements
     class Line():
 
         # Initialize the attributes
-        def __init__(self,galaxy,linewave):
+        def __init__(self,galaxy,linewave,window=40,plot=True):
             self.galaxy = galaxy
             self.linewave = linewave
+            self.window = window
+            self.plot = plot
 
-            # TODO: Need to include a check
-            # if linewave < minimum covered wavelength (rest-frame) OR linewave > max wavelength (rest-frame):
-            # then raise error and exit 
+            # This will trigger a check if wavelength inputted is in the 1D spectral coverage
+            self.check_input_in_wave_coverage()
 
-            self.best_model = self.fit()
+
+            # Fitting the Line
+            self.best_param,self.best_perr = self.fit()
+
+        def check_input_in_wave_coverage(self):
+            obs_linewave = self.linewave*(1. + self.galaxy.zSpec)
+            if (obs_linewave < np.min(self.galaxy.wave)) or \
+                (obs_linewave > np.max(self.galaxy.wave)):
+                raise ValueError("Inputted Wavelength is outside the coverage of the 1D Spectra!")
 
         # Fit a Simple Gaussian Profile to the emission line
         def fit(self):
 
-            # Fit the Model
+            # Convert to Observed Wavelength
             obs_linewave = self.linewave*(1. + self.galaxy.zSpec)
 
-            params,pcov = curve_fit(gaussian,self.galaxy.wave,
-                                            self.galaxy.flux,
+            # Limit Fit
+            keep = np.where((self.galaxy.wave > obs_linewave-self.window/2.) & (self.galaxy.wave < obs_linewave+self.window/2.))
+
+            # Fit the Model
+            params,pcov = curve_fit(gaussian,self.galaxy.wave[keep],
+                                            self.galaxy.flux[keep],
                                             p0=[1e-17,obs_linewave,1.,0.],
-                                            sigma=self.galaxy.err)
+                                            sigma=self.galaxy.err[keep])
+
+            # Get Errors
+            perr = np.sqrt(np.diag(pcov))
+
+            # Get Bestfit Model
+            bestfit_model = gaussian(self.galaxy.wave[keep],*params)
+
+            # Print Parameters
+            print("")
+            print(f"Line Flux: {params[0]:.3e} +- {perr[0]:.3e} erg/s/cm2")
+            print(f"Central Wavelength: {params[1]:.1f} +- {perr[1]:.1f} Angstrom")
+            print(f"Sigma: {params[2]:.2f} +- {perr[2]:.2f} Angstrom")
+            print(f"Continuum Flux Density: {params[3]:.3e} +- {perr[3]:.3e} erg/s/cm2/A")
+            print(f'S/N:{params[0]/perr[0]:.2f}')
+         
+            # Get and Print Reduced Chi2
+            dof = len(self.galaxy.flux[keep]) - len(params) 
+            red_chi2 = reduced_Chi2(bestfit_model,self.galaxy.flux[keep],self.galaxy.err[keep])/dof
+            print(f"Reduced Chi-Square: {red_chi2:0.2f}")
+
+            # Get Refined Redshift
+            new_specz = params[1]/self.linewave - 1.
+            new_specz_err = perr[1]/self.linewave
+
+            print("")
+            print(f"Old Redshift: {self.galaxy.zSpec:0.4f}")
+            print(f"Refined Redshift: {new_specz:0.4f} +- {new_specz_err:0.4f}")
+
 
             # Plot the Model against Observations
-            keep = np.where((self.galaxy.wave > obs_linewave-50.) & (self.galaxy.wave < obs_linewave+50.))
-            plt.plot(self.galaxy.wave[keep],self.galaxy.flux[keep])
-            plt.plot(self.galaxy.wave[keep],gaussian(self.galaxy.wave[keep],*params),ls='--')
-            plt.show()
+            if self.plot == True:
+                plt.plot(self.galaxy.wave[keep],self.galaxy.flux[keep])
+                plt.plot(self.galaxy.wave[keep],bestfit_model,ls='--')
+                plt.show()
 
-            # Print out the Reduced Chi^2
+            return (params,perr) 
+
+        def getLineFlux(self,include_err=False):
+            if include_err == False:
+                return self.best_param[0]
+            if include_err == True:
+                return (self.best_param[0],self.best_perr[0])
 
 
-            return None # Placeholder
+        def getContinuumFluxDensity(self,include_err=False):
+            if include_err == False:
+                return self.best_param[3]
+            if include_err == True:
+                return (self.best_param[3],self.best_perr[3])
 
-        def getLineFlux(self):
-            return self.best_model[0]
-        
-        def getContinuumFluxDensity(self):
-            return self.best_model[3]
 
-        def getVelocityDisp(self,units="Angstrom"):
+        def getVelocityDisp(self,units="Angstrom",include_err=False):
 
             if units == "Angstrom":
-                return self.best_model[2]
+                if include_err == True:
+                    return (self.best_param[2],self.best_perr[2])
+                if include_err == False:
+                    return self.best_param[2]
             
             if units == "km/s":
-                return self.best_model[2]/self.best_model[1]*const.c.to('km/s').value
+                if include_err == True:
+                    velDisp = self.best_param[2]/self.best_param[1]*const.c.to('km/s').value
+                    velDisp_err = velDisp*np.sqrt( (self.best_perr[2]/self.best_param[2])**2. + (self.best_perr[1]/self.best_param[1])**2. )
+                    return (velDisp,velDisp_err)
+                
+                if include_err == False:
+                    return self.best_param[2]/self.best_param[1]*const.c.to('km/s').value
             
             # In case user uses the wrong units
             if ("Angstrom" not in units) or ("km/s" not in units):
@@ -107,6 +163,10 @@ class Galaxy():
             
 
 pedro = Galaxy(701230)
-hb = pedro.create_line(4861)
-pedro.zSpec
-print(hb.linewave)
+hb = pedro.run_line(4959.,plot=False)
+
+print(hb.getLineFlux())
+print(hb.getContinuumFluxDensity())
+print(hb.getVelocityDisp())
+print(hb.getVelocityDisp(units="km/s",include_err=True))
+import pdb;pdb.set_trace()
