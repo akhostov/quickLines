@@ -6,7 +6,7 @@ import matplotlib.pyplot as plt
 
 # Placeholder for the Gaussian Profile
 def gaussian(x,lineFlux,cent_wave,sigma,cont):
-    return None
+    return (1/sigma*np.sqrt(2*np.pi))*lineFlux * np.exp(-(x - cent_wave)**2 / (2 * sigma**2)) + cont
 
 def reduced_Chi2(x,model,obs,err):
     return 0.5*np.sum( ((model - obs)/err)**2. )
@@ -31,7 +31,7 @@ class Galaxy():
 
     # Match with the zCOSMOS catalog to extract the spectroscopic redshift
     def find_z_spec(self):
-        data = fits.open('zCOSMOS_20K.fits')[1].data
+        data = fits.open('data/zCOSMOS_20K.fits')[1].data
         this_one = data['object_id']==self.id
 
         if True in this_one:
@@ -41,12 +41,11 @@ class Galaxy():
 
     # Get the 1D spectra and load it
     def retrieve_1dspec(self):
-        spec_1d = fits.open(f'examples/{self.id}_1d.fits')
-        wave = spec_1d['WAVE']
-        flux = spec_1d['FLUX_REDUCED']
-        err = spec_1d['ERR']
+        spec_1d = fits.open(f'examples/{self.id}_1d.fits')[1].data
+        wave = spec_1d['WAVE'][0]
+        flux = spec_1d['FLUX_REDUCED'][0]
+        err = spec_1d['ERR'][0]
         return (wave,flux,err)
-
 
     # This class defines all the emission line profile measurements
     class Line():
@@ -65,10 +64,14 @@ class Galaxy():
         def fit(self):
 
             # Fit the Model
-
+            obs_linewave = self.linewave*(1. + self.zSpec)
+            params,pcov = curve_fit(gaussian,self.wave,self.flux,p0=[1e-17,obs_linewave,1.,0],sigma=self.err)
 
             # Plot the Model against Observations
-
+            keep = np.where((self.wave > obs_linewave-50.) & (self.wave < obs_linewave+50.))
+            plt.plot(self.wave[keep],self.flux[keep])
+            plt.plot(self.wave[keep],gaussian(self.wave[keep],*params),ls='--')
+            plt.show()
 
             # Print out the Reduced Chi^2
 
@@ -97,6 +100,6 @@ class Galaxy():
             
 
 pedro = Galaxy(701230)
-hb = pedro.Line(4861.)
+hb = pedro.Line(4861)
 pedro.zSpec
 print(hb.linewave)
