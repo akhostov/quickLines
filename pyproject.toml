@@ -2,14 +2,13 @@
 name = "quicklines"
 version = "0.1.0"
 description = "A simple package that will extract emission line profile information given a 1D spectra of a galaxy"
-authors = [
-        {name = "Jim Acosta", email = "imgerardo@outlook.com"},
-        {name = "Ali Ahmad Khostovan", email="akhostov@gmail.com"},
-        {name = "Joey Contreras", email = "joey.z.contreras@gmail.com"},
-        {name = "Jamie Quinn", email = "jquinn4@ucmerced.edu"}
+authors = ["Jim Acosta <imgerardo@outlook.com>",
+           "Ali Ahmad Khostovan <akhostov@gmail.com>",
+           "Joey Contreras <joey.z.contreras@gmail.com>",
+           "Jamie Quinn <jquinn4@ucmerced.edu>"
         ]
 readme = "README.md"
-license = {file = "LICENSE"}
+license = "LICENSE"
 
 [tool.poetry.dependencies]
 python = "^3.8"
