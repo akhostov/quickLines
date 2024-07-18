@@ -4,7 +4,7 @@ import numpy as np
 from scipy.optimize import curve_fit
 import matplotlib.pyplot as plt
 
-# Placeholder for the Gaussian Profile
+# Model for the Gaussian Profile
 def gaussian(x,lineFlux,cent_wave,sigma,cont):
     return (1/sigma*np.sqrt(2*np.pi))*lineFlux * np.exp(-(x - cent_wave)**2 / (2 * sigma**2)) + cont
 
@@ -15,15 +15,25 @@ def reduced_Chi2(model,obs,err):
 class Galaxy():
     
     # Initialize the Galaxy Class
-    def __init__(self, id,zSpec=None):
+    def __init__(self, id,zSpec=None,wave=None,flux=None,err=None):
         
         # Initialze the id which is the main user input
         # spectroscopic redshift is dervied from cross matching with the zCOSMOS 20K catalog
         # A Child Class Line will inherit all tha Galaxy Class attributes
         # The 1D spectra is retrieved from the examples folder
         self.id = id
-        self.zSpec = self.find_z_spec()
-        self.wave,self.flux,self.err = self.retrieve_1dspec()
+
+        # This will take in the zCOSMOS data
+        if (wave.all() == None) and (flux.all() == None) and (err.all() == None) and (zSpec.all() == None):
+            self.zSpec = self.find_z_spec()            
+            self.wave,self.flux,self.err = self.retrieve_1dspec()
+        
+        # Otherwise use the user-input data
+        else:
+            self.zSpec = zSpec
+            self.wave = wave
+            self.flux = flux
+            self.err = err
 
         # Rest-Frame Wavelength Range Observed
         print(f"Spectra covers rest-frame wavelengths between {np.min(self.wave)} and {np.max(self.wave)} Angstroms")
@@ -169,7 +179,7 @@ class Galaxy():
                 raise ValueError("Available Units are Angstrom and km/s")
     
 def main():
-    pedro = Galaxy(701230)
+    pedro = Galaxy(803032)
     hb = pedro.run_line(4959.)
 
     print(hb.getLineFlux())
