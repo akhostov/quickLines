@@ -6,8 +6,12 @@
 Welcome to QuickLines's documentation!
 ======================================
 
+A simple emission line profile fitting package developed as part of the CodeAstro Workshop 2024.
+
+This code can take in the wavelength, flux, and errors of a 1D spectrum and return line flux, continuum flux density, and velocity dispersion.
+
 .. toctree::
-   :maxdepth: 4
+   :maxdepth: 2
    :caption: Contents:
 
    quicklines.rst

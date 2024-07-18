@@ -10,18 +10,27 @@ def gaussian(x: np.array, lineFlux: float, cent_wave: float, sigma: float, cont:
     """
     Compute a Gaussian function with specified astronomical spectrum line parameters.
 
-    Parameters:
-    x (np.array): The array of wavelength values.
-    lineFlux (float): The integrated flux of the line (the area under the Gaussian curve).
-    cent_wave (float): The central wavelength of the Gaussian peak.
-    sigma (float): The standard deviation of the Gaussian distribution (defines the width of the peak).
-    cont (float): The continuum level (a constant value added to the Gaussian).
+    Parameters
+    ----------
+    x: np.array
+        The array of wavelength values.
+    lineFlux: float
+        The integrated flux of the line (the area under the Gaussian curve).
+    cent_wave: float
+        The central wavelength of the Gaussian peak.
+    sigma: float
+        The standard deviation of the Gaussian distribution (defines the width of the peak).
+    cont: float
+        The continuum level (a constant value added to the Gaussian).
 
-    Returns:
-    np.array: The computed Gaussian function values at each wavelength in x.
+    Returns
+    ----------
+    : np.array
+        The computed Gaussian function values at each wavelength in x.
 
-    The Gaussian function is defined as:
-    f(x) = (1/(sigma * sqrt(2 * pi))) * lineFlux * exp(-(x - cent_wave)**2 / (2 * sigma**2)) + cont
+    Notes
+    ----------
+    - The Gaussian function is defined as: f(x) = (1/(sigma * sqrt(2 * pi))) * lineFlux * exp(-(x - cent_wave)**2 / (2 * sigma**2)) + cont
     """
     return (1/sigma*np.sqrt(2*np.pi))*lineFlux * np.exp(-(x - cent_wave)**2 / (2 * sigma**2)) + cont
 
@@ -30,19 +39,23 @@ def reduced_Chi2(model: np.array, obs: np.array, err: np.array) -> float:
     """
     Calculate the reduced chi-squared (χ²) statistic for assessing the goodness of fit.
 
-    Parameters:
-    model (np.array): The array of model values or predicted data.
-    obs (np.array): The array of observed or experimental data.
-    err (np.array): The array of uncertainties or errors associated with the observed data.
+    Parameters
+    ----------
+    model: np.array
+        The array of model values or predicted data.
+    obs: np.array 
+        The array of observed or experimental data.
+    err: np.array 
+        The array of uncertainties or errors associated with the observed data.
 
-    Returns:
-    float: The reduced chi-squared statistic, a measure of the goodness of fit between the model and observed data.
-
-    The reduced chi-squared statistic is calculated using the formula:
-    χ²_reduced = 0.5 * Σ[((model - obs) / err)²]
-    where Σ denotes the sum over all data points.
-
-    This statistic is used to evaluate how well the model fits the observed data. Lower values indicate a better fit.
+    Returns
+    ----------
+    : float
+        The reduced chi-squared statistic, a measure of the goodness of fit between the model and observed data.
+    
+    Notes
+    ----------
+    - The reduced chi-squared statistic is calculated using the formula: χ²_reduced = 0.5 * Σ[((model - obs) / err)²] where Σ denotes the sum over all data points. This statistic is used to evaluate how well the model fits the observed data. Lower values indicate a better fit.
     """
     return 0.5*np.sum(((model - obs)/err)**2.)
 
@@ -54,56 +67,51 @@ class Galaxy():
     This class can be initialized with a zCOSMOS ID, in which case it retrieves the associated spectroscopic redshift and 1D spectra
     from the zCOSMOS 20K catalog. Alternatively, it can be initialized with user-provided spectral data.
 
-    Parameters:
-    ------------
-    id (int): The Galaxy ID or zCOSMOS ID. This is used to cross-match with the zCOSMOS 20K catalog to retrieve the spectroscopic redshift
-              and 1D spectra if no other spectral data is provided.
+    Parameters
+    ----------
+    id : int
+        The Galaxy ID or zCOSMOS ID. This is used to cross-match with the zCOSMOS 20K catalog to retrieve the spectroscopic redshift and 1D spectra if no other spectral data is provided.
+    zSpec : float, optional
+        Spectroscopic redshift of the galaxy. This is used if the galaxy data is provided directly and not retrieved from the zCOSMOS catalog. Default is None.
+    wave : np.array, optional
+        Array of wavelength values for the galaxy's spectrum. This is used if the data is provided directly. Default is None.
+    flux : np.array, optional
+        Array of flux values for the galaxy's spectrum. This is used if the data is provided directly. Default is None.
+    err : np.array, optional
+        Array of error values for the galaxy's spectrum. This is used if the data is provided directly. Default is None.
 
-    zSpec (float, optional): Spectroscopic redshift of the galaxy. This is used if the galaxy data is provided directly and not retrieved
-                              from the zCOSMOS catalog. Default is None.
-
-    wave (np.array, optional): Array of wavelength values for the galaxy's spectrum. This is used if the data is provided directly.
-                                Default is None.
-
-    flux (np.array, optional): Array of flux values for the galaxy's spectrum. This is used if the data is provided directly.
-                               Default is None.
-
-    err (np.array, optional): Array of error values for the galaxy's spectrum. This is used if the data is provided directly.
-                              Default is None.
-
-    Attributes:
-    ------------
-    id (int): The Galaxy ID.
-    zSpec (float): Spectroscopic redshift of the galaxy.
-    wave (np.array): Wavelength values of the galaxy's spectrum.
-    flux (np.array): Flux values of the galaxy's spectrum.
-    err (np.array): Error values of the galaxy's spectrum.
-
-    Notes:
-    ------------
+    Notes
+    -----
     - If only the Galaxy ID is provided, the class will attempt to retrieve the spectroscopic redshift and 1D spectra from the zCOSMOS 20K catalog.
     - The retrieved or provided 1D spectra will include wavelength, flux, and error values.
     - The class prints the range of observed rest-frame wavelengths covered by the spectrum.
 
-    Methods:
-    ------------
-    find_z_spec: Retrieves the spectroscopic redshift from the zCOSMOS catalog based on the Galaxy ID.
-    retrieve_1dspec: Retrieves the 1D spectrum from the examples folder based on the Galaxy ID.
+    Methods
+    -------
+    find_z_spec()
+        Retrieves the spectroscopic redshift from the zCOSMOS catalog based on the Galaxy ID.
+    retrieve_1dspec()
+        Retrieves the 1D spectrum from the examples folder based on the Galaxy ID.
     """
 
     def __init__(self, id: int, zSpec: float = None, wave: np.array = None, flux: np.array = None, err: np.array = None):
         """
         Initialize the Galaxy object with either a zCOSMOS ID or user-provided spectral data.
 
-        Parameters:
+        Parameter:
         ------------
-        id (int): The Galaxy ID or zCOSMOS ID used to retrieve the galaxy's data.
-        zSpec (float, optional): Spectroscopic redshift of the galaxy. Default is None.
-        wave (np.array, optional): Array of wavelength values for the galaxy's spectrum. Default is None.
-        flux (np.array, optional): Array of flux values for the galaxy's spectrum. Default is None.
-        err (np.array, optional): Array of error values for the galaxy's spectrum. Default is None.
+        id: int 
+            The Galaxy ID or zCOSMOS ID used to retrieve the galaxy's data.
+        zSpec: float, optional
+            Spectroscopic redshift of the galaxy. Default is None.
+        wave: np.array, optional
+            Array of wavelength values for the galaxy's spectrum. Default is None.
+        flux: np.array, optional
+            Array of flux values for the galaxy's spectrum. Default is None.
+        err: np.array, optional
+            Array of error values for the galaxy's spectrum. Default is None.
 
-        Raises:
+        Raise:
         ------------
         TypeError: If the provided ID is not of type integer when it is expected to be a zCOSMOS ID.
 
@@ -145,15 +153,15 @@ class Galaxy():
         Attempts to open the zCOSMOS FITS file from two possible locations. Searches the catalog for the entry with the matching
         object ID and returns the corresponding spectroscopic redshift. Raises a ValueError if the ID is not found in the catalog.
 
-        Returns:
-        float: The spectroscopic redshift of the object if the ID is found in the catalog.
-
-        Raises:
-        ValueError: If the object ID is not found in the zCOSMOS catalog.
-
-        Notes:
-        - The function first attempts to open the FITS file from the current directory. If that fails, it tries a relative path.
-        - The FITS file should contain the zCOSMOS catalog with the required columns: 'object_id' and 'Redshift'.
+        Returns
+        -------
+        float
+            The spectroscopic redshift of the object if the ID is found in the catalog.
+            
+        Raises
+        ------
+        ValueError
+            If the object ID is not found in the zCOSMOS catalog.
         """
         try:
             data = fits.open('data/zCOSMOS_20K.fits')[1].data
@@ -175,15 +183,13 @@ class Galaxy():
         from the FITS data. If the error array is not available, a default error estimate based on a 20% uncertainty in flux calibration
         is used.
 
-        Returns:
-        tuple: A tuple containing three numpy arrays:
-        - wave (np.array): The array of wavelength values.
-        - flux (np.array): The array of flux values.
-        - err (np.array): The array of error values. If not present in the FITS file, a 20% uncertainty in flux is used as the error estimate.
-
-        Notes:
-        - The function first attempts to open the FITS file from the `examples` directory. If that fails, it tries a relative path to `../examples`.
-        - The FITS file should contain the columns: 'WAVE', 'FLUX_REDUCED', and optionally 'ERR'. If 'ERR' is not available, a default error estimation is used.
+        Returns
+        -------
+        tuple
+            A tuple containing three numpy arrays:
+            - wave (np.array): The array of wavelength values.
+            - flux (np.array): The array of flux values.
+            - err (np.array): The array of error values. If not present in the FITS file, a 20% uncertainty in flux is used as the error estimate.
         """
         try:
             spec_1d = fits.open(f'examples/{self.id}_1d.fits')[1].data
@@ -203,14 +209,20 @@ class Galaxy():
 
         Creates and returns an instance of the `Line` class, initializing it with the provided wavelength and any additional keyword arguments.
 
-        Parameters:
-        linewave (float): The central wavelength of the emission line.
-        **kwargs: Additional keyword arguments to be passed to the `Line` class constructor.
+        Parameters
+        ----------
+        linewave : float
+            The central wavelength of the emission line.
+        **kwargs
+            Additional keyword arguments to be passed to the `Line` class constructor.
 
-        Returns:
-        Line: An instance of the `Line` class, initialized with the provided wavelength and optional parameters.
-    
-        Notes:
+        Returns
+        -------
+        Line
+            An instance of the `Line` class, initialized with the provided wavelength and optional parameters.
+
+        Notes
+        -----
         - Ensure that the `Line` class is properly defined in the context where this method is used.
         - This method assumes that the `Line` class is defined as a nested class or accessible within the scope of this method.
         """
@@ -220,26 +232,39 @@ class Galaxy():
         """
         This class defines the measurement of emission line profiles in astronomical spectra.
 
-        Attributes:
-        galaxy (Galaxy): The galaxy object that contains the 1D spectra and redshift information.
-        linewave (float): The central wavelength of the emission line to be fitted.
-        window (int): The wavelength window around the emission line for fitting. Default is 40 Angstroms.
-        plot (bool): Whether to plot the observed and fitted spectra. Default is True.
+        Parameters
+        ----------
+        galaxy : Galaxy
+            The galaxy object that contains the 1D spectra and redshift information.
+        linewave : float
+            The central wavelength of the emission line to be fitted.
+        window : int, optional
+            The wavelength window around the emission line for fitting. Default is 40 Angstroms.
+        plot : bool, optional
+            Whether to plot the observed and fitted spectra. Default is True.
 
-        Methods:
-        check_input_in_wave_coverage: Validates if the emission line wavelength is within the 1D spectral coverage.
-        fit: Fits a Gaussian profile to the emission line and returns the best-fit parameters and their errors.
+        Methods
+        -------
+        check_input_in_wave_coverage()
+            Validates if the emission line wavelength is within the 1D spectral coverage.
+        fit()
+            Fits a Gaussian profile to the emission line and returns the best-fit parameters and their errors.
         """
 
         def __init__(self, galaxy: 'Galaxy', linewave: float, window: int = 40, plot: bool = True):
             """
             Initialize the Line object with galaxy data and emission line parameters.
 
-            Parameters:
-            galaxy (Galaxy): The galaxy object that contains the 1D spectra and redshift information.
-            linewave (float): The central wavelength of the emission line to be fitted.
-            window (int, optional): The wavelength window around the emission line for fitting. Default is 40 Angstroms.
-            plot (bool, optional): Whether to plot the observed and fitted spectra. Default is True.
+            Parameters
+            ----------
+            galaxy : Galaxy
+                The galaxy object that contains the 1D spectra and redshift information.
+            linewave : float
+                The central wavelength of the emission line to be fitted.
+            window : int, optional
+                The wavelength window around the emission line for fitting. Default is 40 Angstroms.
+            plot : bool, optional
+                Whether to plot the observed and fitted spectra. Default is True.
             """
             self.galaxy = galaxy
             self.linewave = linewave
@@ -256,8 +281,10 @@ class Galaxy():
             """
             Check if the emission line wavelength is within the 1D spectral coverage of the galaxy.
 
-            Raises:
-            ValueError: If the observed wavelength (linewave * (1 + redshift)) is outside the coverage of the 1D spectra.
+            Raises
+            ------
+            ValueError
+                If the observed wavelength (`linewave * (1 + redshift)`) is outside the coverage of the 1D spectra.
             """
             obs_linewave = self.linewave*(1. + self.galaxy.zSpec)
             if (obs_linewave < np.min(self.galaxy.wave)) or \
@@ -269,21 +296,23 @@ class Galaxy():
             """
             Fit a Gaussian profile to the emission line and return the best-fit parameters and their errors.
 
-            Returns:
-            tuple: A tuple containing two elements:
-            - params (np.array): The best-fit parameters of the Gaussian profile [lineFlux, cent_wave, sigma, cont].
-            - perr (np.array): The uncertainties associated with the best-fit parameters.
-        
+            Returns
+            -------
+            tuple
+                A tuple containing two elements:
+                - params (np.array): The best-fit parameters of the Gaussian profile [lineFlux, cent_wave, sigma, cont].
+                - perr (np.array): The uncertainties associated with the best-fit parameters.
+
             The fit results include:
-            - Line Flux: Integrated flux of the line.
-            - Central Wavelength: The peak wavelength of the emission line.
-            - Sigma: The standard deviation of the Gaussian profile (width of the line).
-            - Continuum Flux Density: The baseline level of the spectrum.
-            - Reduced Chi-Square: A measure of the goodness of fit.
+                - Line Flux: Integrated flux of the line.
+                - Central Wavelength: The peak wavelength of the emission line.
+                - Sigma: The standard deviation of the Gaussian profile (width of the line).
+                - Continuum Flux Density: The baseline level of the spectrum.
+                - Reduced Chi-Square: A measure of the goodness of fit.
 
             Additionally, it prints:
-            - The refined redshift based on the fitted parameters.
-            - Plots the observed spectrum and the fitted Gaussian model if `self.plot` is True.
+                - The refined redshift based on the fitted parameters.
+                - Plots the observed spectrum and the fitted Gaussian model if `self.plot` is True.
             """
 
             # Convert to Observed Wavelength
@@ -346,20 +375,25 @@ class Galaxy():
             """
             Retrieve the flux of the fitted emission line.
 
-            Parameters:
-            include_err (bool, optional): Whether to include the error in the returned result. Default is False.
+            Parameters
+            ----------
+            include_err : bool, optional
+                Whether to include the error in the returned result. Default is False.
 
-            Returns:
-            Union[float, tuple]:
-            - If `include_err` is False, returns the flux of the emission line as a float.
-            - If `include_err` is True, returns a tuple containing:
-                - The flux of the emission line (float).
-                - The uncertainty in the flux (float).
+            Returns
+            -------
+            Union[float, tuple]
+                - If `include_err` is False, returns the flux of the emission line as a float.
+                - If `include_err` is True, returns a tuple containing:
+                    - The flux of the emission line (float).
+                    - The uncertainty in the flux (float).
 
-            Notes:
+            Notes
+            -----
             - The flux value is obtained from the best-fit parameters of the Gaussian profile.
             - The error in the flux is also derived from the uncertainties associated with the best-fit parameters.
             """
+
             if include_err == False:
                 return self.best_param[0]
             if include_err == True:
@@ -369,17 +403,21 @@ class Galaxy():
             """
             Retrieve the continuum flux density of the fitted emission line.
 
-            Parameters:
-            include_err (bool, optional): Whether to include the error in the returned result. Default is False.
+            Parameters
+            ----------
+            include_err : bool, optional
+                Whether to include the error in the returned result. Default is False.
 
-            Returns:
-            Union[float, tuple]:
-            - If `include_err` is False, returns the continuum flux density as a float.
-            - If `include_err` is True, returns a tuple containing:
-                - The continuum flux density (float).
-                - The uncertainty in the continuum flux density (float).
+            Returns
+            -------
+            Union[float, tuple]
+                - If `include_err` is False, returns the continuum flux density as a float.
+                - If `include_err` is True, returns a tuple containing:
+                    - The continuum flux density (float).
+                    - The uncertainty in the continuum flux density (float).
 
-            Notes:
+            Notes
+            -----
             - The continuum flux density value is obtained from the best-fit parameters of the Gaussian profile.
             - The error in the continuum flux density is also derived from the uncertainties associated with the best-fit parameters.
             """
@@ -392,12 +430,16 @@ class Galaxy():
             """
             Retrieve the velocity dispersion of the fitted emission line in the specified units.
 
-            Parameters:
-            units (str, optional): The units for the velocity dispersion. Options are "Angstrom" (default) or "km/s".
-            include_err (bool, optional): Whether to include the error in the returned result. Default is False.
+            Parameters
+            ----------
+            units : str, optional
+                The units for the velocity dispersion. Options are "Angstrom" (default) or "km/s".
+            include_err : bool, optional
+                Whether to include the error in the returned result. Default is False.
 
-            Returns:
-            Union[float, tuple]:
+            Returns
+            -------
+            Union[float, tuple]
                 - If `units` is "Angstrom" and `include_err` is False, returns the velocity dispersion in Angstroms as a float.
                 - If `units` is "Angstrom" and `include_err` is True, returns a tuple containing:
                     - The velocity dispersion in Angstroms (float).
@@ -407,10 +449,13 @@ class Galaxy():
                     - The velocity dispersion in km/s (float).
                     - The uncertainty in the velocity dispersion (float).
 
-            Raises:
-            ValueError: If `units` is not "Angstrom" or "km/s".
+            Raises
+            ------
+            ValueError
+                If `units` is not "Angstrom" or "km/s".
 
-            Notes:
+            Notes
+            -----
             - The velocity dispersion is derived from the Gaussian profile's standard deviation (sigma) and central wavelength.
             - When converting to km/s, the speed of light (`const.c`) is used for conversion, and error propagation is considered.
             """

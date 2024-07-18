@@ -1,9 +1,10 @@
 .. _quicklines:
 
-Test
+QuickLines
 =====================
 
-Test.
 
 .. automodule:: quicklines
    :members:
+   
+
