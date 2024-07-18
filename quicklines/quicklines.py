@@ -1,3 +1,4 @@
+from typing import Union
 from astropy.io import fits
 import astropy.constants as const
 import numpy as np
@@ -5,14 +6,14 @@ from scipy.optimize import curve_fit
 import matplotlib.pyplot as plt
 
 
-def gaussian(x: np.array, lineFlux: float, cent_wave: float, sigma: float, cont: float):
+def gaussian(x: np.array, lineFlux: float, cent_wave: float, sigma: float, cont: float) -> np.array:
     """
     A simple gaussian function with all the astronomical spectrum line parameters
     """
     return (1/sigma*np.sqrt(2*np.pi))*lineFlux * np.exp(-(x - cent_wave)**2 / (2 * sigma**2)) + cont
 
 
-def reduced_Chi2(model: np.array, obs: np.array, err: np.array):
+def reduced_Chi2(model: np.array, obs: np.array, err: np.array) -> float:
     """
     Calculate the chi^2 statistics to accept or reject the line fitting
     """
@@ -35,7 +36,7 @@ class Galaxy():
         self.id = id
 
         # This will take in the zCOSMOS data
-        if (wave.all() == None) and (flux.all() == None) and (err.all() == None) and (zSpec.all() == None):
+        if (wave is None) and (flux is None) and (err is None) and (zSpec is None):
             
             # test to make sure that the zCOSMOS ID is an integer
             if type(self.id) != int:
@@ -56,7 +57,7 @@ class Galaxy():
             f"Spectra covers rest-frame wavelengths between {np.min(self.wave)} and {np.max(self.wave)} Angstroms")
 
     #
-    def find_z_spec(self):
+    def find_z_spec(self) -> Union[float, ValueError]:
         """
         Match with the zCOSMOS catalog to extract the spectroscopic redshift
         """
@@ -72,7 +73,7 @@ class Galaxy():
         else:
             raise ValueError("ID is not in catalog")
 
-    def retrieve_1dspec(self):
+    def retrieve_1dspec(self) -> tuple:
         """
         Get the 1D spectra and load it
         """
@@ -88,7 +89,10 @@ class Galaxy():
         err = np.abs(0.2*flux)
         return (wave, flux, err)
 
-    def run_line(self, linewave: float, **kwargs):
+    def run_line(self, linewave: float, **kwargs) -> 'Line':
+        """
+        Instance Line class
+        """
         return self.Line(self, linewave, **kwargs)
 
     class Line():
@@ -115,7 +119,7 @@ class Galaxy():
                 raise ValueError(
                     "Inputted Wavelength is outside the coverage of the 1D Spectra!")
 
-        def fit(self):
+        def fit(self) -> tuple:
             """
             Fit a Simple Gaussian Profile to the emission line
             """
@@ -176,19 +180,19 @@ class Galaxy():
 
             return (params, perr)
 
-        def getLineFlux(self, include_err: bool = False):
+        def getLineFlux(self, include_err: bool = False) -> Union[float, tuple]:
             if include_err == False:
                 return self.best_param[0]
             if include_err == True:
                 return (self.best_param[0], self.best_perr[0])
 
-        def getContinuumFluxDensity(self, include_err: bool = False):
+        def getContinuumFluxDensity(self, include_err: bool = False) -> Union[float, tuple]:
             if include_err == False:
                 return self.best_param[3]
             if include_err == True:
                 return (self.best_param[3], self.best_perr[3])
 
-        def getVelocityDisp(self, units: str = "Angstrom", include_err: bool = False):
+        def getVelocityDisp(self, units: str = "Angstrom", include_err: bool = False) -> Union[float, tuple]:
 
             if units == "Angstrom":
                 if include_err == True:
