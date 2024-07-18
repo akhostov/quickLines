@@ -135,7 +135,7 @@ class Galaxy():
 
         # Rest-Frame Wavelength Range Observed
         print(
-            f"Spectra covers rest-frame wavelengths between {np.min(self.wave)} and {np.max(self.wave)} Angstroms")
+            f"Spectra covers rest-frame wavelengths between {np.min(self.wave)/(1.+self.zSpec)} and {np.max(self.wave)/(1.+self.zSpec)} Angstroms")
 
     #
     def find_z_spec(self) -> Union[float, ValueError]:
@@ -439,10 +439,17 @@ class Galaxy():
 
 
 def main():
-    pedro = Galaxy(803032)
+    #data = fits.open("../examples/701230_1d.fits")[1].data
+
+    #wave = data["WAVE"][0]
+    #flux = data["FLUX_REDUCED"][0]
+    #err = flux*0.2
+
+    #pedro = Galaxy("123",wave=wave,flux=flux,err=err,zSpec=0.6691)
+    pedro = Galaxy(701230)
     hb = pedro.run_line(4959.)
 
-    print(hb.getLineFlux())
+    print(hb.getLineFlux(include_err=True))
     print(hb.getContinuumFluxDensity())
     print(hb.getVelocityDisp())
     print(hb.getVelocityDisp(units="km/s", include_err=True))
