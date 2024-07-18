@@ -25,6 +25,11 @@ class Galaxy():
 
         # This will take in the zCOSMOS data
         if (wave.all() == None) and (flux.all() == None) and (err.all() == None) and (zSpec.all() == None):
+            
+            # test to make sure that the zCOSMOS ID is an integer
+            if type(self.id) != int:
+                raise TypeError("zCOSMOS ID needs to be of type integer")
+            
             self.zSpec = self.find_z_spec()            
             self.wave,self.flux,self.err = self.retrieve_1dspec()
         
