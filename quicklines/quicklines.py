@@ -24,6 +24,16 @@ class Galaxy():
     """
     Class that accepts the information of the spectra of one galaxy. If not declared, it can
     accept a zCOSMOS id from the examples folder
+
+    Parameters
+    ------------
+        id: int
+            The Galaxy ID. This can also be zCOSMOS ID which will be cross-matched with the zCOSMOS 20K catalog to retrieve spectroscopic redshift
+        
+    Return
+    -----------
+        galaxy: object
+            Blah
     """
 
     def __init__(self, id: int, zSpec: bool = None, wave: np.array = None, flux: np.array = None, err: np.array = None):
