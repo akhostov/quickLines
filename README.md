@@ -12,11 +12,7 @@ The package takes in a given 1D spectra (wavelength, flux, and error spectrum), 
 At the moment, this package can only fit single gaussian functions but can be expanded to include multi-component gaussians (e.g., narrow + broad emission line components, fitting doublets such as CIII]1907,1909A and [OII]3726,3728A) and also uses the ```scipy.optimize.curve_fit``` in the fitting process but can be expanded to incorporate other fitting approaches (e.g., Nested Sampling) in the case of complex parameter spaces (e.g., fitting multiple features).
 
 # Installation
-The installation for this package is easy! just
-```
-pip install quicklines
-```
-or you can also clone the repository and run
+The installation for this package is easy! just clone the repository and run
 ```
 pip install git+git@github.com:akhostov/quickLines.git
 ```
