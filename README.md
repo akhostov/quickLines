@@ -1,6 +1,6 @@
 ![alt text](logo/quicklines_logo.png)
-
-Developed as part of the 2024 Code/Astro Software Engineering for Astronomers Workshop, quickLines is designed and packaged to be a simple, quick way of extracting emission line properties on-the-fly given a 1D spectra of a galaxy. quickLines is meant to be a great companion in observing runs or exploring spectroscopic data sets with efficiency where we can essentially make on-the-fly calculations of emission line features before devling into more detailed calculations.
+***
+Developed as part of the 2024 Code/Astro Software Engineering for Astronomers Workshop, quickLines is designed and packaged to be a simple, quick way of extracting emission line properties on-the-fly given a 1D spectra of a galaxy. quickLines is meant to be a great companion in observing runs or exploring spectroscopic data sets with efficiency where we can essentially make on-the-fly calculations of emission line features before delving into more detailed calculations.
 
 The program quickly measures:
   - Emission Line Flux
