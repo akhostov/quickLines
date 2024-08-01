@@ -64,11 +64,11 @@ norm = Normalize(vmin=np.min(wave), vmax=np.max(wave))
 cmap = LinearSegmentedColormap.from_list('custom_grad', ['purple', 'blue', 'cyan', 'green', 'orange', 'red', 'crimson'])
 
 # Create a figure and axis
-fig, ax = plt.subplots(figsize=(12, 3))
+fig, ax = plt.subplots(figsize=(10, 3))
 
 # Add text for the name "quickLines"
-ax.text(4842, 0.9, r'quickLines', fontsize=36, color='#00BFFF', ha='left', va='center', fontweight='bold', fontname='Comic Sans MS')
-ax.text(4850, 0.7, r'On-the-Fly Emission Line Property Extractor', fontsize=24, color='#00BFFF', ha='left', va='center', fontstyle='italic', fontname='DejaVu Sans')
+ax.text(4842, 0.9, r'quickLines', fontsize=56, color='#00BFFF', ha='left', va='center', fontweight='bold', fontname='Comic Sans MS')
+ax.text(4850, 0.65, r'On-the-Fly Emission Line Property Extractor', fontsize=25, color='#00BFFF', ha='left', va='center', fontstyle='italic', fontname='DejaVu Sans')
 
 
 # Plot the spectrum with fuzzy cartoon effect
