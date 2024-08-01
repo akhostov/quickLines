@@ -57,7 +57,7 @@ def reduced_Chi2(model: np.array, obs: np.array, err: np.array) -> float:
     ----------
     - The reduced chi-squared statistic is calculated using the formula: χ²_reduced = 0.5 * Σ[((model - obs) / err)²] where Σ denotes the sum over all data points. This statistic is used to evaluate how well the model fits the observed data. Lower values indicate a better fit.
     """
-    return 0.5*np.sum(((model - obs)/err)**2.)
+    return np.sum(((model - obs)/err)**2.)
 
 
 class Galaxy():
@@ -143,7 +143,7 @@ class Galaxy():
 
         # Rest-Frame Wavelength Range Observed
         print(
-            f"Spectra covers rest-frame wavelengths between {np.min(self.wave)/(1.+self.zSpec)} and {np.max(self.wave)/(1.+self.zSpec)} Angstroms")
+            f"Spectra covers rest-frame wavelengths between {np.min(self.wave)/(1.+self.zSpec):0.0f} and {np.max(self.wave)/(1.+self.zSpec):0.0f} Angstroms")
 
     #
     def find_z_spec(self) -> Union[float, ValueError]:
@@ -492,7 +492,7 @@ def main():
 
     #pedro = Galaxy("123",wave=wave,flux=flux,err=err,zSpec=0.6691)
     pedro = Galaxy(701230)
-    hb = pedro.run_line(4959.)
+    hb = pedro.run_line(4861.)
 
     print(hb.getLineFlux(include_err=True))
     print(hb.getContinuumFluxDensity())
