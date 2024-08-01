@@ -67,8 +67,8 @@ cmap = LinearSegmentedColormap.from_list('custom_grad', ['purple', 'blue', 'cyan
 fig, ax = plt.subplots(figsize=(12, 3))
 
 # Add text for the name "quickLines"
-ax.text(4842, 0.7, r'quickLines', fontsize=18, color='#00BFFF', ha='left', va='center', fontweight='bold', fontname='Comic Sans MS')
-ax.text(4850, 0.6, r'On-the-Fly Emission Line Property Extractor', fontsize=10, color='#00BFFF', ha='left', va='center', fontstyle='italic', fontname='DejaVu Sans')
+ax.text(4842, 0.9, r'quickLines', fontsize=36, color='#00BFFF', ha='left', va='center', fontweight='bold', fontname='Comic Sans MS')
+ax.text(4850, 0.7, r'On-the-Fly Emission Line Property Extractor', fontsize=24, color='#00BFFF', ha='left', va='center', fontstyle='italic', fontname='DejaVu Sans')
 
 
 # Plot the spectrum with fuzzy cartoon effect
