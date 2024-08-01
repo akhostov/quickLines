@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "quicklines"
-version = "1.0.0"
+version = "1.0.1"
 description = "A simple package that will extract emission line profile information given a 1D spectra of a galaxy"
 authors = ["Ali Ahmad Khostovan <akhostov@gmail.com>",
             "Jim Acosta <imgerardo@outlook.com>",

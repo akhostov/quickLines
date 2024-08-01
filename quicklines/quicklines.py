@@ -76,7 +76,7 @@ class Galaxy():
     wave : np.array, optional
         Array of wavelength values for the galaxy's spectrum. This is used if the data is provided directly. Default is None.
     flux : np.array, optional
-        Array of flux values for the galaxy's spectrum. This is used if the data is provided directly. Default is None.
+        Array of flux values for the galaxy's spectrum. This is used if the data is provided directly. Default is None. Note: Flux calibrated values (e.g., 1e-17 cgs) should be scaled to unity (e.g., original flux * 1e17)
     err : np.array, optional
         Array of error values for the galaxy's spectrum. This is used if the data is provided directly. Default is None.
 
@@ -325,7 +325,7 @@ class Galaxy():
             # Fit the Model
             params, pcov = curve_fit(gaussian, self.galaxy.wave[keep],
                                      self.galaxy.flux[keep],
-                                     p0=[1e-17, obs_linewave, 1., 0.],
+                                     p0=[1, obs_linewave, 1., 0.],
                                      sigma=self.galaxy.err[keep])
 
             # Get Errors

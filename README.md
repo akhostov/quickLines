@@ -1,4 +1,4 @@
-![alt text](logo/quicklines_logo.png)
+![alt text](quicklines/quicklines_logo.png)
 
 Developed as part of the 2024 Code/Astro Software Engineering for Astronomers Workshop, quickLines is designed and packaged to be a simple, quick way of extracting emission line properties on-the-fly given a 1D spectra of a galaxy. quickLines is meant to be a great companion in observing runs or exploring spectroscopic data sets with efficiency where we can essentially make on-the-fly calculations of emission line features before devling into more detailed calculations.
 
@@ -16,10 +16,11 @@ The installation for this package is easy! just
 ```
 pip install quicklines
 ```
-or you can also clone the repository and run
+or you can also run
 ```
-pip install git+git@github.com:akhostov/quickLines.git
+pip install git+https://github.com/akhostov/quickLines.git
 ```
+or clone the repository.
 
 # Usage
 Import the module as 
@@ -61,7 +62,7 @@ which will notify you that you can investigate any line for which the rest-frame
 
 At this point, you can now enter a line of interest (rest-frame wavelengths) as such
 ```
-Hbeta_line = my_galaxy(4861.)
+Hbeta_line = my_galaxy.run_line(4861.)
 ```
 where in this example we are interest in the Hydrogen Balmer Line (4 --> 2 transition) about 4861 Angstroms. quickLines will immediately convert this to observer-frame wavelength and automatically do the emission line profile fitting and print out the following:
 ```

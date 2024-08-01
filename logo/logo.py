@@ -84,4 +84,4 @@ ax.axis('off')
 plt.tight_layout(pad=0.1, rect=[0, 0, 1, 1])  # Adjust rect to fit the figure content
 
 # Save the figure
-fig.savefig("quicklines_logo.png", dpi=300, bbox_inches='tight', transparent=True, pad_inches=0)
+fig.savefig("../quicklines/quicklines_logo.png", dpi=300, bbox_inches='tight', transparent=True, pad_inches=0)
