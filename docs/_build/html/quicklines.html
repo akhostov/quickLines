@@ -1,114 +1,343 @@
+
+
 <!DOCTYPE html>
-<html class="writer-html5" lang="en">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>QuickLines &mdash; QuickLines 0.1 documentation</title>
-      <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-      <link rel="stylesheet" type="text/css" href="_static/css/theme.css" />
+
+
+<html lang="en" data-content_root="" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>QuickLines &#8212; quickLines 1.0.1 documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
 
   
-  <!--[if lt IE 9]>
-    <script src="_static/js/html5shiv.min.js"></script>
-  <![endif]-->
+  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
   
-        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-        <script src="_static/jquery.js"></script>
-        <script src="_static/underscore.js"></script>
-        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
-        <script src="_static/doctools.js"></script>
-        <script src="_static/sphinx_highlight.js"></script>
-    <script src="_static/js/theme.js"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
+  <script src="_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/sphinx_highlight.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'quicklines';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="prev" title="Welcome to QuickLines’s documentation!" href="index.html" /> 
-</head>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
 
-<body class="wy-body-for-nav"> 
-  <div class="wy-grid-for-nav">
-    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
-      <div class="wy-side-scroll">
-        <div class="wy-side-nav-search" >
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
 
-          
-          
-          <a href="index.html" class="icon icon-home">
-            QuickLines
-          </a>
-<div role="search">
-  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
-    <input type="hidden" name="check_keywords" value="yes" />
-    <input type="hidden" name="area" value="default" />
-  </form>
-</div>
-        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
-<ul class="current">
-<li class="toctree-l1 current"><a class="current reference internal" href="#">QuickLines</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#quicklines.Galaxy"><code class="docutils literal notranslate"><span class="pre">Galaxy</span></code></a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#quicklines.Galaxy.find_z_spec"><code class="docutils literal notranslate"><span class="pre">Galaxy.find_z_spec()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#quicklines.Galaxy.retrieve_1dspec"><code class="docutils literal notranslate"><span class="pre">Galaxy.retrieve_1dspec()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#quicklines.Galaxy.Line"><code class="docutils literal notranslate"><span class="pre">Galaxy.Line</span></code></a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#quicklines.Galaxy.Line.check_input_in_wave_coverage"><code class="docutils literal notranslate"><span class="pre">Galaxy.Line.check_input_in_wave_coverage()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#quicklines.Galaxy.Line.fit"><code class="docutils literal notranslate"><span class="pre">Galaxy.Line.fit()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id0"><code class="docutils literal notranslate"><span class="pre">Galaxy.Line.check_input_in_wave_coverage()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id2"><code class="docutils literal notranslate"><span class="pre">Galaxy.Line.fit()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#quicklines.Galaxy.Line.getContinuumFluxDensity"><code class="docutils literal notranslate"><span class="pre">Galaxy.Line.getContinuumFluxDensity()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#quicklines.Galaxy.Line.getLineFlux"><code class="docutils literal notranslate"><span class="pre">Galaxy.Line.getLineFlux()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#quicklines.Galaxy.Line.getVelocityDisp"><code class="docutils literal notranslate"><span class="pre">Galaxy.Line.getVelocityDisp()</span></code></a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="#id3"><code class="docutils literal notranslate"><span class="pre">Galaxy.find_z_spec()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id4"><code class="docutils literal notranslate"><span class="pre">Galaxy.retrieve_1dspec()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#quicklines.Galaxy.run_line"><code class="docutils literal notranslate"><span class="pre">Galaxy.run_line()</span></code></a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="#quicklines.gaussian"><code class="docutils literal notranslate"><span class="pre">gaussian()</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="#quicklines.reduced_Chi2"><code class="docutils literal notranslate"><span class="pre">reduced_Chi2()</span></code></a></li>
-</ul>
-</li>
-</ul>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
 
-        </div>
-      </div>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
     </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
 
-    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
-          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="index.html">QuickLines</a>
-      </nav>
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
 
-      <div class="wy-nav-content">
-        <div class="rst-content">
-          <div role="navigation" aria-label="Page navigation">
-  <ul class="wy-breadcrumbs">
-      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
-      <li class="breadcrumb-item active">QuickLines</li>
-      <li class="wy-breadcrumbs-aside">
-            <a href="_sources/quicklines.rst.txt" rel="nofollow"> View page source</a>
-      </li>
+  
+
+<a class="navbar-brand logo" href="index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/quicklines_logo.png" class="logo__image only-light" alt="quickLines 1.0.1 documentation - Home"/>
+    <script>document.write(`<img src="_static/quicklines_logo.png" class="logo__image only-dark" alt="quickLines 1.0.1 documentation - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="install.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="usage.html">Usage</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/quicklines.rst" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.rst</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
   </ul>
-  <hr/>
 </div>
-          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
-           <div itemprop="articleBody">
-             
-  <div class="section" id="quicklines">
-<span id="id1"></span><h1>QuickLines<a class="headerlink" href="#quicklines" title="Permalink to this heading"></a></h1>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>QuickLines</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quicklines.Galaxy"><code class="docutils literal notranslate"><span class="pre">Galaxy</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#quicklines.Galaxy.find_z_spec"><code class="docutils literal notranslate"><span class="pre">Galaxy.find_z_spec()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#quicklines.Galaxy.retrieve_1dspec"><code class="docutils literal notranslate"><span class="pre">Galaxy.retrieve_1dspec()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#quicklines.Galaxy.Line"><code class="docutils literal notranslate"><span class="pre">Galaxy.Line</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#quicklines.Galaxy.Line.check_input_in_wave_coverage"><code class="docutils literal notranslate"><span class="pre">Galaxy.Line.check_input_in_wave_coverage()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#quicklines.Galaxy.Line.fit"><code class="docutils literal notranslate"><span class="pre">Galaxy.Line.fit()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id0"><code class="docutils literal notranslate"><span class="pre">Galaxy.Line.check_input_in_wave_coverage()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id2"><code class="docutils literal notranslate"><span class="pre">Galaxy.Line.fit()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#quicklines.Galaxy.Line.getContinuumFluxDensity"><code class="docutils literal notranslate"><span class="pre">Galaxy.Line.getContinuumFluxDensity()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#quicklines.Galaxy.Line.getLineFlux"><code class="docutils literal notranslate"><span class="pre">Galaxy.Line.getLineFlux()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#quicklines.Galaxy.Line.getVelocityDisp"><code class="docutils literal notranslate"><span class="pre">Galaxy.Line.getVelocityDisp()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3"><code class="docutils literal notranslate"><span class="pre">Galaxy.find_z_spec()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4"><code class="docutils literal notranslate"><span class="pre">Galaxy.retrieve_1dspec()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#quicklines.Galaxy.run_line"><code class="docutils literal notranslate"><span class="pre">Galaxy.run_line()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quicklines.gaussian"><code class="docutils literal notranslate"><span class="pre">gaussian()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quicklines.reduced_Chi2"><code class="docutils literal notranslate"><span class="pre">reduced_Chi2()</span></code></a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section id="quicklines">
+<span id="id1"></span><h1>QuickLines<a class="headerlink" href="#quicklines" title="Permalink to this heading">#</a></h1>
 <span class="target" id="module-quicklines"></span><dl class="py class">
 <dt class="sig sig-object py" id="quicklines.Galaxy">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">quicklines.</span></span><span class="sig-name descname"><span class="pre">Galaxy</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">zSpec</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wave</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">array</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">flux</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">array</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">err</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">array</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#quicklines.Galaxy" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">quicklines.</span></span><span class="sig-name descname"><span class="pre">Galaxy</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">zSpec</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wave</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">array</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">flux</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">array</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">err</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">array</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#quicklines.Galaxy" title="Permalink to this definition">#</a></dt>
 <dd><p>A class representing the spectral information of a galaxy.</p>
 <p>This class can be initialized with a zCOSMOS ID, in which case it retrieves the associated spectroscopic redshift and 1D spectra
 from the zCOSMOS 20K catalog. Alternatively, it can be initialized with user-provided spectral data.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>id</strong> (<em>int</em>) – The Galaxy ID or zCOSMOS ID. This is used to cross-match with the zCOSMOS 20K catalog to retrieve the spectroscopic redshift and 1D spectra if no other spectral data is provided.</p></li>
 <li><p><strong>zSpec</strong> (<em>float</em><em>, </em><em>optional</em>) – Spectroscopic redshift of the galaxy. This is used if the galaxy data is provided directly and not retrieved from the zCOSMOS catalog. Default is None.</p></li>
 <li><p><strong>wave</strong> (<em>np.array</em><em>, </em><em>optional</em>) – Array of wavelength values for the galaxy’s spectrum. This is used if the data is provided directly. Default is None.</p></li>
-<li><p><strong>flux</strong> (<em>np.array</em><em>, </em><em>optional</em>) – Array of flux values for the galaxy’s spectrum. This is used if the data is provided directly. Default is None.</p></li>
+<li><p><strong>flux</strong> (<em>np.array</em><em>, </em><em>optional</em>) – Array of flux values for the galaxy’s spectrum. This is used if the data is provided directly. Default is None. Note: Flux calibrated values (e.g., 1e-17 cgs) should be scaled to unity (e.g., original flux * 1e17)</p></li>
 <li><p><strong>err</strong> (<em>np.array</em><em>, </em><em>optional</em>) – Array of error values for the galaxy’s spectrum. This is used if the data is provided directly. Default is None.</p></li>
 </ul>
 </dd>
@@ -121,22 +350,22 @@ from the zCOSMOS 20K catalog. Alternatively, it can be initialized with user-pro
 </ul>
 <dl class="py method">
 <dt class="sig sig-object py" id="quicklines.Galaxy.find_z_spec">
-<span class="sig-name descname"><span class="pre">find_z_spec</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#quicklines.Galaxy.find_z_spec" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">find_z_spec</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#quicklines.Galaxy.find_z_spec" title="Permalink to this definition">#</a></dt>
 <dd><p>Retrieves the spectroscopic redshift from the zCOSMOS catalog based on the Galaxy ID.</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="quicklines.Galaxy.retrieve_1dspec">
-<span class="sig-name descname"><span class="pre">retrieve_1dspec</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#quicklines.Galaxy.retrieve_1dspec" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">retrieve_1dspec</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#quicklines.Galaxy.retrieve_1dspec" title="Permalink to this definition">#</a></dt>
 <dd><p>Retrieves the 1D spectrum from the examples folder based on the Galaxy ID.</p>
 </dd></dl>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="quicklines.Galaxy.Line">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Line</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">galaxy</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#quicklines.Galaxy" title="quicklines.Galaxy"><span class="pre">Galaxy</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">linewave</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">window</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">40</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">plot</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#quicklines.Galaxy.Line" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Line</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">galaxy</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#quicklines.Galaxy" title="quicklines.Galaxy"><span class="pre">Galaxy</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">linewave</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">window</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">40</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">plot</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#quicklines.Galaxy.Line" title="Permalink to this definition">#</a></dt>
 <dd><p>This class defines the measurement of emission line profiles in astronomical spectra.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>galaxy</strong> (<a class="reference internal" href="#quicklines.Galaxy" title="quicklines.Galaxy"><em>Galaxy</em></a>) – The galaxy object that contains the 1D spectra and redshift information.</p></li>
 <li><p><strong>linewave</strong> (<em>float</em>) – The central wavelength of the emission line to be fitted.</p></li>
@@ -147,22 +376,22 @@ from the zCOSMOS 20K catalog. Alternatively, it can be initialized with user-pro
 </dl>
 <dl class="py method">
 <dt class="sig sig-object py" id="quicklines.Galaxy.Line.check_input_in_wave_coverage">
-<span class="sig-name descname"><span class="pre">check_input_in_wave_coverage</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#quicklines.Galaxy.Line.check_input_in_wave_coverage" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">check_input_in_wave_coverage</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#quicklines.Galaxy.Line.check_input_in_wave_coverage" title="Permalink to this definition">#</a></dt>
 <dd><p>Validates if the emission line wavelength is within the 1D spectral coverage.</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="quicklines.Galaxy.Line.fit">
-<span class="sig-name descname"><span class="pre">fit</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#quicklines.Galaxy.Line.fit" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">fit</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#quicklines.Galaxy.Line.fit" title="Permalink to this definition">#</a></dt>
 <dd><p>Fits a Gaussian profile to the emission line and returns the best-fit parameters and their errors.</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="id0">
-<span class="sig-name descname"><span class="pre">check_input_in_wave_coverage</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#id0" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">check_input_in_wave_coverage</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#id0" title="Permalink to this definition">#</a></dt>
 <dd><p>Check if the emission line wavelength is within the 1D spectral coverage of the galaxy.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Raises</dt>
+<dt class="field-odd">Raises<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>ValueError</strong> – If the observed wavelength (<cite>linewave * (1 + redshift)</cite>) is outside the coverage of the 1D spectra.</p>
 </dd>
 </dl>
@@ -170,10 +399,10 @@ from the zCOSMOS 20K catalog. Alternatively, it can be initialized with user-pro
 
 <dl class="py method">
 <dt class="sig sig-object py" id="id2">
-<span class="sig-name descname"><span class="pre">fit</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">tuple</span></span></span><a class="headerlink" href="#id2" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">fit</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">tuple</span></span></span><a class="headerlink" href="#id2" title="Permalink to this definition">#</a></dt>
 <dd><p>Fit a Gaussian profile to the emission line and return the best-fit parameters and their errors.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
 <dd class="field-odd"><p><ul class="simple">
 <li><p><em>tuple</em> – A tuple containing two elements:
 - params (np.array): The best-fit parameters of the Gaussian profile [lineFlux, cent_wave, sigma, cont].
@@ -201,13 +430,13 @@ from the zCOSMOS 20K catalog. Alternatively, it can be initialized with user-pro
 
 <dl class="py method">
 <dt class="sig sig-object py" id="quicklines.Galaxy.Line.getContinuumFluxDensity">
-<span class="sig-name descname"><span class="pre">getContinuumFluxDensity</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">include_err</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">tuple</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#quicklines.Galaxy.Line.getContinuumFluxDensity" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">getContinuumFluxDensity</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">include_err</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">tuple</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#quicklines.Galaxy.Line.getContinuumFluxDensity" title="Permalink to this definition">#</a></dt>
 <dd><p>Retrieve the continuum flux density of the fitted emission line.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>include_err</strong> (<em>bool</em><em>, </em><em>optional</em>) – Whether to include the error in the returned result. Default is False.</p>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p><ul class="simple">
 <li><p>If <cite>include_err</cite> is False, returns the continuum flux density as a float.</p></li>
 <li><dl class="simple">
@@ -221,7 +450,7 @@ from the zCOSMOS 20K catalog. Alternatively, it can be initialized with user-pro
 </ul>
 </p>
 </dd>
-<dt class="field-odd">Return type</dt>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>Union[float, tuple]</p>
 </dd>
 </dl>
@@ -234,13 +463,13 @@ from the zCOSMOS 20K catalog. Alternatively, it can be initialized with user-pro
 
 <dl class="py method">
 <dt class="sig sig-object py" id="quicklines.Galaxy.Line.getLineFlux">
-<span class="sig-name descname"><span class="pre">getLineFlux</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">include_err</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">tuple</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#quicklines.Galaxy.Line.getLineFlux" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">getLineFlux</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">include_err</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">tuple</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#quicklines.Galaxy.Line.getLineFlux" title="Permalink to this definition">#</a></dt>
 <dd><p>Retrieve the flux of the fitted emission line.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>include_err</strong> (<em>bool</em><em>, </em><em>optional</em>) – Whether to include the error in the returned result. Default is False.</p>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p><ul class="simple">
 <li><p>If <cite>include_err</cite> is False, returns the flux of the emission line as a float.</p></li>
 <li><dl class="simple">
@@ -254,7 +483,7 @@ from the zCOSMOS 20K catalog. Alternatively, it can be initialized with user-pro
 </ul>
 </p>
 </dd>
-<dt class="field-odd">Return type</dt>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>Union[float, tuple]</p>
 </dd>
 </dl>
@@ -267,16 +496,16 @@ from the zCOSMOS 20K catalog. Alternatively, it can be initialized with user-pro
 
 <dl class="py method">
 <dt class="sig sig-object py" id="quicklines.Galaxy.Line.getVelocityDisp">
-<span class="sig-name descname"><span class="pre">getVelocityDisp</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">units</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'Angstrom'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">include_err</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">tuple</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#quicklines.Galaxy.Line.getVelocityDisp" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">getVelocityDisp</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">units</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'Angstrom'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">include_err</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">tuple</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#quicklines.Galaxy.Line.getVelocityDisp" title="Permalink to this definition">#</a></dt>
 <dd><p>Retrieve the velocity dispersion of the fitted emission line in the specified units.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>units</strong> (<em>str</em><em>, </em><em>optional</em>) – The units for the velocity dispersion. Options are “Angstrom” (default) or “km/s”.</p></li>
 <li><p><strong>include_err</strong> (<em>bool</em><em>, </em><em>optional</em>) – Whether to include the error in the returned result. Default is False.</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p><ul class="simple">
 <li><p>If <cite>units</cite> is “Angstrom” and <cite>include_err</cite> is False, returns the velocity dispersion in Angstroms as a float.</p></li>
 <li><dl class="simple">
@@ -299,10 +528,10 @@ from the zCOSMOS 20K catalog. Alternatively, it can be initialized with user-pro
 </ul>
 </p>
 </dd>
-<dt class="field-odd">Return type</dt>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>Union[float, tuple]</p>
 </dd>
-<dt class="field-even">Raises</dt>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
 <dd class="field-even"><p><strong>ValueError</strong> – If <cite>units</cite> is not “Angstrom” or “km/s”.</p>
 </dd>
 </dl>
@@ -317,18 +546,18 @@ from the zCOSMOS 20K catalog. Alternatively, it can be initialized with user-pro
 
 <dl class="py method">
 <dt class="sig sig-object py" id="id3">
-<span class="sig-name descname"><span class="pre">find_z_spec</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">ValueError</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#id3" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">find_z_spec</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">ValueError</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#id3" title="Permalink to this definition">#</a></dt>
 <dd><p>Retrieve the spectroscopic redshift from the zCOSMOS catalog based on the object’s ID.</p>
 <p>Attempts to open the zCOSMOS FITS file from two possible locations. Searches the catalog for the entry with the matching
 object ID and returns the corresponding spectroscopic redshift. Raises a ValueError if the ID is not found in the catalog.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
 <dd class="field-odd"><p>The spectroscopic redshift of the object if the ID is found in the catalog.</p>
 </dd>
-<dt class="field-even">Return type</dt>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
 <dd class="field-even"><p>float</p>
 </dd>
-<dt class="field-odd">Raises</dt>
+<dt class="field-odd">Raises<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>ValueError</strong> – If the object ID is not found in the zCOSMOS catalog.</p>
 </dd>
 </dl>
@@ -336,19 +565,19 @@ object ID and returns the corresponding spectroscopic redshift. Raises a ValueEr
 
 <dl class="py method">
 <dt class="sig sig-object py" id="id4">
-<span class="sig-name descname"><span class="pre">retrieve_1dspec</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">tuple</span></span></span><a class="headerlink" href="#id4" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">retrieve_1dspec</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">tuple</span></span></span><a class="headerlink" href="#id4" title="Permalink to this definition">#</a></dt>
 <dd><p>Load and return the 1D spectrum data for the given object ID.</p>
 <p>Attempts to open the 1D FITS file from two possible locations. Extracts and returns the wavelength, flux, and error arrays
 from the FITS data. If the error array is not available, a default error estimate based on a 20% uncertainty in flux calibration
 is used.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
 <dd class="field-odd"><p>A tuple containing three numpy arrays:
 - wave (np.array): The array of wavelength values.
 - flux (np.array): The array of flux values.
 - err (np.array): The array of error values. If not present in the FITS file, a 20% uncertainty in flux is used as the error estimate.</p>
 </dd>
-<dt class="field-even">Return type</dt>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
 <dd class="field-even"><p>tuple</p>
 </dd>
 </dl>
@@ -356,20 +585,20 @@ is used.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="quicklines.Galaxy.run_line">
-<span class="sig-name descname"><span class="pre">run_line</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">linewave</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#quicklines.Galaxy.Line" title="quicklines.Galaxy.Line"><span class="pre">Line</span></a></span></span><a class="headerlink" href="#quicklines.Galaxy.run_line" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">run_line</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">linewave</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#quicklines.Galaxy.Line" title="quicklines.Galaxy.Line"><span class="pre">Line</span></a></span></span><a class="headerlink" href="#quicklines.Galaxy.run_line" title="Permalink to this definition">#</a></dt>
 <dd><p>Instantiate a Line object with the specified wavelength and optional parameters.</p>
 <p>Creates and returns an instance of the <cite>Line</cite> class, initializing it with the provided wavelength and any additional keyword arguments.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>linewave</strong> (<em>float</em>) – The central wavelength of the emission line.</p></li>
 <li><p><strong>**kwargs</strong> – Additional keyword arguments to be passed to the <cite>Line</cite> class constructor.</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>An instance of the <cite>Line</cite> class, initialized with the provided wavelength and optional parameters.</p>
 </dd>
-<dt class="field-odd">Return type</dt>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p><a class="reference internal" href="#quicklines.Galaxy.Line" title="quicklines.Galaxy.Line">Line</a></p>
 </dd>
 </dl>
@@ -384,10 +613,10 @@ is used.</p>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="quicklines.gaussian">
-<span class="sig-prename descclassname"><span class="pre">quicklines.</span></span><span class="sig-name descname"><span class="pre">gaussian</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">array</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lineFlux</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cent_wave</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sigma</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cont</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">array</span></span></span><a class="headerlink" href="#quicklines.gaussian" title="Permalink to this definition"></a></dt>
+<span class="sig-prename descclassname"><span class="pre">quicklines.</span></span><span class="sig-name descname"><span class="pre">gaussian</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">array</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lineFlux</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cent_wave</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sigma</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cont</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">array</span></span></span><a class="headerlink" href="#quicklines.gaussian" title="Permalink to this definition">#</a></dt>
 <dd><p>Compute a Gaussian function with specified astronomical spectrum line parameters.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>x</strong> (<em>np.array</em>) – The array of wavelength values.</p></li>
 <li><p><strong>lineFlux</strong> (<em>float</em>) – The integrated flux of the line (the area under the Gaussian curve).</p></li>
@@ -396,10 +625,10 @@ is used.</p>
 <li><p><strong>cont</strong> (<em>float</em>) – The continuum level (a constant value added to the Gaussian).</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>The computed Gaussian function values at each wavelength in x.</p>
 </dd>
-<dt class="field-odd">Return type</dt>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>np.array</p>
 </dd>
 </dl>
@@ -411,20 +640,20 @@ is used.</p>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="quicklines.reduced_Chi2">
-<span class="sig-prename descclassname"><span class="pre">quicklines.</span></span><span class="sig-name descname"><span class="pre">reduced_Chi2</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">array</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">obs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">array</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">err</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">array</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="headerlink" href="#quicklines.reduced_Chi2" title="Permalink to this definition"></a></dt>
+<span class="sig-prename descclassname"><span class="pre">quicklines.</span></span><span class="sig-name descname"><span class="pre">reduced_Chi2</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">array</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">obs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">array</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">err</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">array</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="headerlink" href="#quicklines.reduced_Chi2" title="Permalink to this definition">#</a></dt>
 <dd><p>Calculate the reduced chi-squared (χ²) statistic for assessing the goodness of fit.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>model</strong> (<em>np.array</em>) – The array of model values or predicted data.</p></li>
 <li><p><strong>obs</strong> (<em>np.array</em>) – The array of observed or experimental data.</p></li>
 <li><p><strong>err</strong> (<em>np.array</em>) – The array of uncertainties or errors associated with the observed data.</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>The reduced chi-squared statistic, a measure of the goodness of fit between the model and observed data.</p>
 </dd>
-<dt class="field-odd">Return type</dt>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>float</p>
 </dd>
 </dl>
@@ -434,36 +663,106 @@ is used.</p>
 </ul>
 </dd></dl>
 
+</section>
+
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
 </div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
 
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quicklines.Galaxy"><code class="docutils literal notranslate"><span class="pre">Galaxy</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#quicklines.Galaxy.find_z_spec"><code class="docutils literal notranslate"><span class="pre">Galaxy.find_z_spec()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#quicklines.Galaxy.retrieve_1dspec"><code class="docutils literal notranslate"><span class="pre">Galaxy.retrieve_1dspec()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#quicklines.Galaxy.Line"><code class="docutils literal notranslate"><span class="pre">Galaxy.Line</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#quicklines.Galaxy.Line.check_input_in_wave_coverage"><code class="docutils literal notranslate"><span class="pre">Galaxy.Line.check_input_in_wave_coverage()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#quicklines.Galaxy.Line.fit"><code class="docutils literal notranslate"><span class="pre">Galaxy.Line.fit()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id0"><code class="docutils literal notranslate"><span class="pre">Galaxy.Line.check_input_in_wave_coverage()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id2"><code class="docutils literal notranslate"><span class="pre">Galaxy.Line.fit()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#quicklines.Galaxy.Line.getContinuumFluxDensity"><code class="docutils literal notranslate"><span class="pre">Galaxy.Line.getContinuumFluxDensity()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#quicklines.Galaxy.Line.getLineFlux"><code class="docutils literal notranslate"><span class="pre">Galaxy.Line.getLineFlux()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#quicklines.Galaxy.Line.getVelocityDisp"><code class="docutils literal notranslate"><span class="pre">Galaxy.Line.getVelocityDisp()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3"><code class="docutils literal notranslate"><span class="pre">Galaxy.find_z_spec()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4"><code class="docutils literal notranslate"><span class="pre">Galaxy.retrieve_1dspec()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#quicklines.Galaxy.run_line"><code class="docutils literal notranslate"><span class="pre">Galaxy.run_line()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quicklines.gaussian"><code class="docutils literal notranslate"><span class="pre">gaussian()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quicklines.reduced_Chi2"><code class="docutils literal notranslate"><span class="pre">reduced_Chi2()</span></code></a></li>
+</ul>
+  </nav></div>
 
-           </div>
+</div></div>
+              
+            
           </div>
-          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="index.html" class="btn btn-neutral float-left" title="Welcome to QuickLines’s documentation!" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Ali Ahmad Khostovan, Jim Acosta, Joey Contreras, Jamie Quinn
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2024, Ali Ahmad Khostovan, Jim Acosta, Joey Contreras, Jamie Quinn.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
     </div>
-
-  <hr/>
-
-  <div role="contentinfo">
-    <p>&#169; Copyright 2024, Ali Ahmad Khostovan, Jim Acosta, Joey Contreras, Jamie Quinn.</p>
   </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
 
-  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
-    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
-    provided by <a href="https://readthedocs.org">Read the Docs</a>.
-   
-
-</footer>
-        </div>
-      </div>
-    </section>
-  </div>
-  <script>
-      jQuery(function () {
-          SphinxRtdTheme.Navigation.enable(true);
-      });
-  </script> 
-
-</body>
+  <footer class="bd-footer">
+  </footer>
+  </body>
 </html>
