@@ -3,7 +3,7 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-.. image:: _build/html/_static/quicklines_logo.png
+.. image:: _static/quicklines_logo.png
    :alt: quickLines Logo
    :width: 800px
    :align: center
