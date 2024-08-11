@@ -1,0 +1,33 @@
+name: Deploy Documentation
+
+on:
+  push:
+    branches:
+      - main  # Adjust if your default branch is different
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.x'  # Adjust Python version if needed
+
+      - name: Install dependencies
+        run: |
+          pip install -r docs/requirements.txt  # Adjust if your dependencies are located elsewhere
+
+      - name: Build documentation
+        run: |
+          make -C docs html
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: docs/_build/html
+          publish_branch: gh-pages
