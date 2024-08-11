@@ -20,7 +20,7 @@ jobs:
       - name: Install dependencies
         run: |
           pip install -r requirements.txt  # Adjust if your dependencies are located elsewhere
-          pip install sphinx-build
+          pip install Sphinx
           pip install sphinx-book-theme
 
       - name: Build documentation
