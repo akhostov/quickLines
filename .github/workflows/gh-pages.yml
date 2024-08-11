@@ -19,7 +19,7 @@ jobs:
 
       - name: Install dependencies
         run: |
-          pip install -r docs/requirements.txt  # Adjust if your dependencies are located elsewhere
+          pip install -r requirements.txt  # Adjust if your dependencies are located elsewhere
 
       - name: Build documentation
         run: |
